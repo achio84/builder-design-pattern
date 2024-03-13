@@ -6,7 +6,16 @@ namespace BuilderDesignPattern
     {
         private SqlConnection GetConnectionString()
         {
-            return new SqlConnection("Server=localhost; Database=IdentityServer2; Trusted_Connection=True; TrustServerCertificate=True;");
+            //return new SqlConnection("Server=localhost; Database=IdentityServer2; Trusted_Connection=True; TrustServerCertificate=True;");
+
+            var builder = new ConnectionStringBuilder();
+            var connection = builder
+                .WithDbServer("localhost")
+                .WithDatabaseName("IdentityServer2")
+                .WithTrustedConnection()
+                .Build();
+
+            return connection;
         }
 
         public async Task<DateTimeOffset> GetDateTimeOffset(CancellationToken cancellationToken)

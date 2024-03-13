@@ -35,5 +35,5 @@ async Task<DateTimeOffset> GetCurrentDate(CancellationToken cancellationToken = 
 async Task SendEmailAsync(CancellationToken cancellationToken = default)
 {
     var service = new SmtpEmailService();
-    await service.SendEmailAsync("chingchong.jong@company1.com.my", "noreply@company1.com.my", "Test subject", "test body", new List<string>());
+    await service.SendEmailAsync("chingchong.jong@company1.com.my", "noreply@company1.com.my", "Test subject", "test body");
 }
