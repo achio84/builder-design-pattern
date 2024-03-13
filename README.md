@@ -5,12 +5,20 @@ Builder pattern is one of creational design pattern that allows you to break dow
  - Constructing email message to be sent out.
  - Constructing connecting string.
 
+There are 3 branches in this repo.
+1. main branch - basic setup without builder pattern.
+2. feature/1-with-builder - simple builder pattern.
+3. feature/2-staged-approach - guided step-by-step approach of builder pattern.
+
 ## Comparison with Fluent API
 
 |No | Builder Pattern | Fluent API | 
 |___|_________________|____________|
 |1| All about object creation | about configuring object, but not creation|
 |2| Object created is in final state (immutable) | Non-immutable |
+
+## Popular use case of builder pattern
+- StringBuilder class in .net framework.
 
 ## Pros and Cons
 |No | Pros | Cons | 
