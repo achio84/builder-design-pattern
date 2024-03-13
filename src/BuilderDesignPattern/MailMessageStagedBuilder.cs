@@ -9,10 +9,13 @@ namespace BuilderDesignPattern
         IMessageStage,
         IMailMessageInitializationStage
     {
-        private MailMessage _mailMessage;
+        private string _sender;
+        private string _recipient;
+        private string _subject;
+        private string _message;
+
         private MailMessageStagedBuilder()
         {
-            _mailMessage = new MailMessage();
         }
 
         public static ISenderStage CreateMailMessage()
@@ -22,31 +25,37 @@ namespace BuilderDesignPattern
 
         public IRecepientStage AddSender(string sender)
         {
-            _mailMessage.From = new MailAddress(sender);
+            _sender = sender;
             return this;
         }
 
         public ISubjectStage AddRecipient(string recipient)
         {
-            _mailMessage.To.Add(new MailAddress(recipient));
+            _recipient = recipient;
             return this;
         }
 
         public IMessageStage WithSubject(string subject)
         {
-            _mailMessage.Subject = subject;
+            _subject = subject;
             return this;
         }
 
         public IMailMessageInitializationStage WithMessage(string message)
         {
-            _mailMessage.Body = message;
+            _message = message;
             return this;
         }
 
         public MailMessage Build()
         {
-            return _mailMessage;
+            var mail = new MailMessage();
+            mail.From = new MailAddress(_sender);
+            mail.To.Add(new MailAddress(_recipient));
+            mail.Subject = _subject;
+            mail.Body = _message;
+
+            return mail;
         }
     }
 

@@ -4,39 +4,47 @@ namespace BuilderDesignPattern
 {
     internal sealed class MailMessageBuilder
     {
-        private MailMessage mailMessage;
+        private string _sender;
+        private string _recipient;
+        private string _subject;
+        private string _message;
         public MailMessageBuilder() 
         {
-            mailMessage = new MailMessage();
         }
 
         public MailMessageBuilder AddSender(string sender)
         {
-            mailMessage.From = new MailAddress(sender);
+            _sender = sender;
             return this;
         }
 
         public MailMessageBuilder AddRecipient(string mailTo)
         {
-            mailMessage.To.Add(new MailAddress(mailTo));
+            _recipient = mailTo;
             return this;
         }
 
         public MailMessageBuilder WithSubject(string subject)
         {
-            mailMessage.Subject = subject;
+            _subject = subject;
             return this;
         }
 
         public MailMessageBuilder WithMessage(string message)
         {
-            mailMessage.Body = message;
+            _message = message;
             return this;
         }
 
         public MailMessage Build()
         {
-            return mailMessage;
+            var mail = new MailMessage();
+            mail.From = new MailAddress(_sender);
+            mail.To.Add(new MailAddress(_recipient));
+            mail.Subject = _subject;
+            mail.Body = _message;
+
+            return mail;
         }
     }
 }
