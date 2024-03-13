@@ -12,20 +12,20 @@ There are 3 branches in this repo.
 
 ## Comparison with Fluent API
 
-|No | Builder Pattern | Fluent API | 
-|___|_________________|____________|
-|1| All about object creation | about configuring object, but not creation|
-|2| Object created is in final state (immutable) | Non-immutable |
+| No    | Builder Pattern | Fluent Api    |
+| -------- | ------- | ----------------- |
+| 1 | All about object creation | about configuring object, but not creation |
+| 2 | Object created is in final state (immutable) | Non-immutable |
 
 ## Popular use case of builder pattern
 - StringBuilder class in .net framework.
 
 ## Pros and Cons
-|No | Pros | Cons | 
-|___|_________________|____________|
+| No | Pros | Cons | 
+| -------- | ------- | ----------------- |
 | 1 | We can construct objects in step-by-step fashion. | Increase complexity as it introduces additional classes (builders/directors) and more abstract. |
-| 2 | More control over how object is created | |
-| 3 | Cleaner code, better readability | |
+| 2 | More control over how object is created | -- |
+| 3 | Cleaner code, better readability | -- |
 
 ## References:
 - https://refactoring.guru/design-patterns/builder 
