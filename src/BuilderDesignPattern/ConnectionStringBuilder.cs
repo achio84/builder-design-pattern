@@ -4,7 +4,6 @@ namespace BuilderDesignPattern
 {
     internal sealed class ConnectionStringBuilder
     {
-        private SqlConnection _connection;
         private string _serverName = string.Empty;
         private string _dbName = string.Empty;
         private string _userName = string.Empty;
@@ -14,7 +13,6 @@ namespace BuilderDesignPattern
 
         public ConnectionStringBuilder()
         {
-            _connection = new SqlConnection();
         }
 
         public ConnectionStringBuilder WithDbServer(string serverName)
@@ -50,9 +48,7 @@ namespace BuilderDesignPattern
                 _ => $"Server={_serverName}; Database={_dbName}; User ID={_userName}; Password={_password}; TrustServerCertificate=True;"
             };
 
-            _connection.ConnectionString = connectionString;
-
-            return _connection;
+            return new SqlConnection(connectionString);
         }
     }
 }
