@@ -5,6 +5,7 @@ while (true)
 {
     Console.WriteLine("Press 1 to print current date from DB.");
     Console.WriteLine("Press 2 to send email.");
+    Console.WriteLine("Press any key to end.");
     Console.WriteLine("Enter your selection.");
 
     var input = Console.ReadKey();

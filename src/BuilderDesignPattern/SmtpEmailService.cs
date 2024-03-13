@@ -8,13 +8,20 @@ namespace BuilderDesignPattern
         {
             using(var smtp = new SmtpClient("localhost", 25))
             {
-                var builder = new MailMessageBuilder();
-                var mail = builder
+                var mail = MailMessageStagedBuilder
+                    .CreateMailMessage()
                     .AddSender(mailFrom)
                     .AddRecipient(mailTo)
                     .WithSubject(subject)
                     .WithMessage(message)
                     .Build();
+                //var builder = new MailMessageBuilder();
+                //var mail = builder
+                //    .AddSender(mailFrom)
+                //    .AddRecipient(mailTo)
+                //    .WithSubject(subject)
+                //    .WithMessage(message)
+                //    .Build();
 
                 await smtp.SendMailAsync(mail);
 

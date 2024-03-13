@@ -8,10 +8,17 @@ namespace BuilderDesignPattern
         {
             //return new SqlConnection("Server=localhost; Database=IdentityServer2; Trusted_Connection=True; TrustServerCertificate=True;");
 
-            var builder = new ConnectionStringBuilder();
-            var connection = builder
-                .WithDbServer("localhost")
-                .WithDatabaseName("IdentityServer2")
+            //var builder = new ConnectionStringBuilder();
+            //var connection = builder
+            //    .WithDbServer("localhost")
+            //    .WithDatabaseName("IdentityServer2")
+            //    .WithTrustedConnection()
+            //    .Build();
+
+            var connection = ConnectionStringStagedBuilder
+                .CreateConnection()
+                .WithServer("localhost")
+                .WithDatabase("IdentityServer2")
                 .WithTrustedConnection()
                 .Build();
 
